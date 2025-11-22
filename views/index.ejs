@@ -1,49 +1,48 @@
 <!-- Hero Section with Background Image -->
-<section
-  class="relative w-full overflow-hidden pt-24 pb-12 md:pt-32 md:pb-20 bg-cover bg-center"
-  style="background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&h=1080&fit=crop');">
+<section class="relative w-full overflow-hidden pt-20 pb-10 md:pt-32 md:pb-20 bg-cover bg-center"
+  style="background-image: url('/assets/img/mother-feeding-baby-with-breast-scaled.jpg');">
 
-  <!-- Overlay for readability -->
-  <div class="absolute inset-0 bg-primary/50"></div>
+  <!-- Overlay - Reduced opacity for better text visibility on mobile -->
+  <div class="absolute inset-0 bg-primary/40 md:bg-primary/50"></div>
 
-  <div class="relative max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="grid md:grid-cols-2 gap-12 items-center">
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8 items-center">
 
-      <!-- Left Content -->
-      <div class="text-center md:text-left relative z-10">
-        <h1 class="text-2xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+      <!-- Left Content - Added overflow-hidden and text-wrap -->
+      <div class="text-center md:text-left relative z-10 overflow-hidden">
+        <!-- Added text-wrap and adjusted sizes -->
+        <h1
+          class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight text-wrap mobile-text-shadow">
           Nutritus Healthcare Pvt.Ltd.
         </h1>
-        <h2 class="text-xl md:text-3xl font-semibold text-yellow-400 mb-6">
+
+        <h2 class="text-lg sm:text-xl md:text-3xl font-semibold text-yellow-400 mb-6 text-wrap mobile-text-shadow">
           Infant Formula With Special Nutrients
         </h2>
-        <p class="text-lg text-white/90 mb-8">Presents</p>
 
-        <!-- Product Images -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-          <div class="bg-white rounded-xl shadow-lg p-3 hover:shadow-xl transition-shadow">
-            <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=120&h=150&fit=crop"
-              alt="Nestamil 1" class="w-full rounded-lg object-cover h-40">
-          </div>
-          <div class="bg-white rounded-xl shadow-lg p-3 hover:shadow-xl transition-shadow">
-            <img src="https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=120&h=150&fit=crop"
-              alt="Nestamil 2" class="w-full rounded-lg object-cover h-40">
-          </div>
-          <div class="bg-white rounded-xl shadow-lg p-3 hover:shadow-xl transition-shadow">
-            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=120&h=150&fit=crop"
-              alt="Nestamil 3" class="w-full rounded-lg object-cover h-40">
-          </div>
-          <div class="bg-white rounded-xl shadow-lg p-3 hover:shadow-xl transition-shadow">
-            <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=120&h=150&fit=crop"
-              alt="Nestamil 4" class="w-full rounded-lg object-cover h-40">
+        <p class="text-base sm:text-lg text-white mb-8 mobile-text-shadow">Presents</p>
+
+        <!-- Infinite Loop Slider - Fixed container width -->
+        <div class="overflow-hidden w-full max-w-full mt-4">
+          <div id="slider" class="flex w-max gap-3">
+            <!-- Slider Template -->
+            <template id="slider-items">
+              <div class="flex-shrink-0 w-28 sm:w-36 md:w-40 p-2">
+                <div class="rounded-xl">
+                  <img src="/assets/img/Product-1.png" alt="Nestamil 1"
+                    class="w-full h-28 sm:h-36 md:h-40 object-contain rounded-lg">
+                </div>
+              </div>
+            </template>
           </div>
         </div>
       </div>
 
-      <!-- Right Image -->
-      <div class="relative z-10">
-        <img src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?w=600&h=700&fit=crop" alt="Mother with baby"
+      <!-- Right Image (hide on mobile) -->
+      <div class="relative z-10 hidden md:block">
+        <img src="/assets/img/mother-feeding-baby-with-breast-scaled.jpg" alt="Mother with baby"
           class="w-full rounded-2xl shadow-2xl object-cover">
+
         <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg shadow-lg">
           <p class="text-sm text-gray-700 font-medium">Nutritus India – Nutrition From Baby</p>
         </div>
@@ -53,72 +52,98 @@
   </div>
 </section>
 
+<script>
+  const slider = document.getElementById('slider');
+  const template = document.getElementById('slider-items');
+  const images = [
+    '/assets/img/Product-1.png',
+    '/assets/img/Product-2.png',
+    '/assets/img/Product-3.png',
+    '/assets/img/Product-4.png'
+  ];
+
+  // Create slider items dynamically and duplicate for infinite loop
+  images.concat(images).forEach(src => {
+    const clone = template.content.cloneNode(true);
+    clone.querySelector('img').src = src;
+    slider.appendChild(clone);
+  });
+
+  let translateX = 0;
+
+  function animateSlider() {
+    translateX -= 1; // speed
+    if (Math.abs(translateX) >= slider.scrollWidth / 2) translateX = 0;
+    slider.style.transform = `translateX(${translateX}px)`;
+    requestAnimationFrame(animateSlider);
+  }
+
+  animateSlider();
+</script>
 
 <!-- Welcome Section -->
-<section class="py-16 md:py-24 bg-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+<section class="py-12 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+
+    <!-- Heading -->
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4">
         Welcome To Nutritus Healthcare Pvt.Ltd.
       </h2>
-      <div class="w-24 h-1 bg-primary mx-auto rounded-full mb-8"></div>
+      <div class="w-20 sm:w-24 h-1 bg-primary mx-auto rounded-full mb-6"></div>
     </div>
 
-    <div class="grid md:grid-cols-2 gap-12 items-start">
+    <!-- Grid: Stacks on mobile, 2 columns on desktop -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-start">
 
       <!-- Left Content -->
-      <div class="space-y-6 text-gray-700 leading-relaxed">
+      <div class="space-y-4 sm:space-y-6 text-gray-700 leading-relaxed text-sm sm:text-base">
         <p>
           Nutritus Healthcare Pvt. Ltd. entered the market in 2012 with a mission to provide high-quality, reliable,
-          affordable & user-friendly infant & baby formula accessible to parents. Our commitment to quality and
-          innovation has made us close to brand India.
+          affordable & user-friendly infant & baby formula accessible to parents.
         </p>
         <p>
-          As an ISO 22000:2005 professional, Nutritus Healthcare Pvt. Ltd. follows best manufacturing practices in the
-          dairy, pharmaceutical, and medical market. Our formula meets leading necessary. We offer a time-tested quality
-          unmatched, and perfectly acceptable baby nutritional standards of breast milk and is one of the top baby
-          brands.
+          As an ISO 22000:2005 professional, we follow best manufacturing practices in the dairy, pharmaceutical, and
+          medical sectors. Our formula meets leading baby nutritional standards.
         </p>
         <p>
-          At Nutritus Healthcare Pvt. Ltd. we are dedicated to high-quality infant formula. With nutritional products
-          tested and trusted India. Our formula is time-tested for those moms that have health issues and are not able
-          to give breastfeed. We offer direct to make our formula affordable for all families.
+          We are dedicated to high-quality infant formula—trusted and tested across India. Our products are designed
+          to support mothers who face breastfeeding challenges.
         </p>
         <p>
-          Additionally, our infant formula has a labs/ designed to close to breastfed milk. Our products are available
-          for ages 0-6, 6-12, 12-24 months, and 24 months plus & our products are made by GMP certified facility in
-          Maharashtra and Gujarat-based on Pana plant.
+          Our infant formulas closely resemble breast milk and are available for 0–6, 6–12, 12–24 months, and 24+
+          months.
         </p>
       </div>
 
-      <!-- Right Icons -->
-      <div class="space-y-8">
+      <!-- Right Icons Column -->
+      <div class="space-y-6 sm:space-y-8">
 
-        <!-- Our Quality -->
-        <div class="flex items-start space-x-4 p-6 bg-purple-50 rounded-xl hover:shadow-lg transition-shadow">
-          <div class="flex-shrink-0 w-16 h-16 bg-primary rounded-full flex items-center justify-center">
-            <span class="material-icons text-white text-4xl">verified</span>
+        <!-- Quality -->
+        <div class="flex items-start space-x-4 p-4 sm:p-6 bg-purple-50 rounded-xl hover:shadow-lg transition-shadow">
+          <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-primary rounded-full flex items-center justify-center">
+            <span class="material-icons text-white text-3xl sm:text-4xl">verified</span>
           </div>
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Our Quality</h3>
-            <p class="text-gray-600">
-              As a healthcare company, we want to give the range of products for both babies and adults to serve our
-              country. Clients, distributors and retailers...
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Our Quality</h3>
+            <p class="text-gray-600 text-sm sm:text-base">
+              We offer a complete range of high-quality products for babies and adults, trusted by clients,
+              distributors, and retailers.
             </p>
           </div>
         </div>
 
-        <!-- Our Vision -->
-        <div class="flex items-start space-x-4 p-6 bg-yellow-50 rounded-xl hover:shadow-lg transition-shadow">
-          <div class="flex-shrink-0 w-16 h-16 bg-secondary rounded-full flex items-center justify-center">
-            <span class="material-icons text-white text-4xl">visibility</span>
+        <!-- Vision -->
+        <div class="flex items-start space-x-4 p-4 sm:p-6 bg-yellow-50 rounded-xl hover:shadow-lg transition-shadow">
+          <div
+            class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-secondary rounded-full flex items-center justify-center">
+            <span class="material-icons text-white text-3xl sm:text-4xl">visibility</span>
           </div>
           <div>
-            <h3 class="text-xl font-bold text-gray-800 mb-2">Our Vision</h3>
-            <p class="text-gray-600">
-              Our vision is same to our customers and understand their needs, providing the highest quality products and
-              continuously improving. Our mission is always to provide the best products and achieve when our customers
-              are satisfied...
+            <h3 class="text-lg sm:text-xl font-bold text-gray-800 mb-1 sm:mb-2">Our Vision</h3>
+            <p class="text-gray-600 text-sm sm:text-base">
+              Our vision is to understand customer needs and provide high-quality products, always improving and
+              ensuring complete satisfaction.
             </p>
           </div>
         </div>
@@ -140,14 +165,14 @@
       <div class="w-24 h-1 bg-primary mx-auto rounded-full"></div>
     </div>
 
-    <!-- Products Grid -->
-    <div class="grid md:grid-cols-3 gap-8">
+    <!-- Products Grid Top Row -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-8">
 
       <!-- Product 1: 0-6 Months -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=300&h=350&fit=crop" alt="Nestamil 1"
-            class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-1.png" alt="Nestamil 0-6 Months"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-primary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">0-6 Months</h3>
           </div>
@@ -156,8 +181,6 @@
             Nestamil Infant Formula with specialized nutrients agro-appropriate suitable for birth to 6 months with
             essential overall growth and development.
           </p>
-
-          <!-- Features List -->
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
@@ -182,18 +205,16 @@
       <!-- Product 2: 6-12 Months -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=300&h=350&fit=crop" alt="Nestamil 2"
-            class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-2.png" alt="Nestamil 6-12 Months"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-secondary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">6-12 Months</h3>
           </div>
           <h4 class="font-bold text-lg text-gray-800 mb-3">Nestamil Follow up Formula</h4>
           <p class="text-sm text-gray-600 mb-4">
-            Nestamil Follow up formula stage 2 for 6 to 12 months. Nestamil 2 contain balanced, age- appropriate
+            Nestamil Follow up formula stage 2 for 6 to 12 months. Nestamil 2 contain balanced, age-appropriate
             nutrients essential for overall growth and development.
           </p>
-
-          <!-- Features List -->
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-secondary mr-2 text-xl">check_circle</span>
@@ -215,18 +236,16 @@
       <!-- Product 3: 12-24 Months -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=300&h=350&fit=crop" alt="Nestamil 3"
-            class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-3.png" alt="Nestamil 12-24 Months"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-primary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">12-24 Months</h3>
           </div>
           <h4 class="font-bold text-lg text-gray-800 mb-3">Nestamil Follow up Formula</h4>
           <p class="text-sm text-gray-600 mb-4">
-            Nestamil Follow up formula stage 3 for 12 to 24 months. Nestamil 3 contain balanced, age- appropriate
+            Nestamil Follow up formula stage 3 for 12 to 24 months. Nestamil 3 contain balanced, age-appropriate
             nutrients essential for overall growth and development.
           </p>
-
-          <!-- Features List -->
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
@@ -247,20 +266,19 @@
     </div>
 
     <!-- Additional Products Row -->
-    <div class="grid md:grid-cols-2 gap-8 mt-8">
+    <div class="grid sm:grid-cols-2 gap-8 mt-8">
 
       <!-- Nestamil LBW -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=300&h=300&fit=crop"
-            alt="Nestamil LBW" class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-4.png" alt="Nestamil LBW"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-secondary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">NESTAMIL LBW</h3>
           </div>
           <p class="text-sm text-gray-600 mb-4">
             Nestamil LBW with specialized nutrient agro-Nestamil LBW for Low Birth Weight growth and weight gain.
           </p>
-
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-secondary mr-2 text-xl">check_circle</span>
@@ -277,15 +295,14 @@
       <!-- Nestamil LD -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1627133925532-7f1551e3c7a2?w=300&h=300&fit=crop" alt="Nestamil LD"
-            class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-4.png" alt="Nestamil LD"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-primary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">NESTAMIL LD</h3>
           </div>
           <p class="text-sm text-gray-600 mb-4">
             Nestamil LD Lactose free formula with calcium phosphate for babies with lactose intolerance.
           </p>
-
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
@@ -301,21 +318,20 @@
 
     </div>
 
-    <!-- Bottom Products Row (Nestamil 1, 2, 3 variants) -->
+    <!-- Bottom Products Row (Nestamil 1,2,3 variants) -->
     <div class="grid md:grid-cols-3 gap-8 mt-8">
 
-      <!-- Nestamil 1 (Purple) -->
+      <!-- Nestamil 1 -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?w=300&h=350&fit=crop"
-            alt="Nestamil 1 Follow up" class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-1.png" alt="Nestamil 1 Follow up"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-primary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">NESTAMIL 1</h3>
           </div>
           <p class="text-sm text-gray-600 mb-4">
             Nestamil Follow up formula stage 1 for 0 to 6 Months
           </p>
-
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
@@ -329,18 +345,17 @@
         </div>
       </div>
 
-      <!-- Nestamil 2 (Gold) -->
+      <!-- Nestamil 2 -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1584308972272-9e4e7685e80f?w=300&h=350&fit=crop"
-            alt="Nestamil 2 Follow up" class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-2.png" alt="Nestamil 2 Follow up"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-secondary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">NESTAMIL 2</h3>
           </div>
           <p class="text-sm text-gray-600 mb-4">
             Nestamil Follow up formula stage 2 for 6 to 12 Months
           </p>
-
           <ul class="space-y-3 text-sm text-gray-700">
             <li class="flex items-start">
               <span class="material-icons text-secondary mr-2 text-xl">check_circle</span>
@@ -354,35 +369,28 @@
         </div>
       </div>
 
-      <!-- Nestamil 3 (Purple) -->
+      <!-- Nestamil 3 -->
       <div class="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow">
         <div class="p-6">
-          <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=300&h=350&fit=crop"
-            alt="Nestamil 3 Follow up" class="w-full rounded-xl mb-6 object-cover h-64">
+          <img src="/assets/img/Product-3.png" alt="Nestamil 3 Follow up"
+            class="w-full rounded-xl mb-6 object-contain h-72 bg-white p-2">
           <div class="bg-primary text-white text-center py-3 rounded-lg mb-4">
             <h3 class="font-bold text-lg">NESTAMIL 3</h3>
           </div>
           <p class="text-sm text-gray-600 mb-4">
             Nestamil Follow up formula stage 3 for 12 to 24 Months
           </p>
-
           <ul class="space-y-3 text-sm text-gray-700">
-            <li class="flex items-start">
-              <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
-              <span>Nestamil 3 contain unique blend of early food for Brain Development</span>
-            </li>
-            <li class="flex items-start">
-              <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
-              <span>Nucleotides, Zinc, Selenium, Vitamin A, C, D, E, to help Strengthen Immune System</span>
-            </li>
-            <li class="flex items-start">
-              <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
-              <span>High Quality Protein, Eurobots</span>
-            </li>
-            <li class="flex items-start">
-              <span class="material-icons text-primary mr-2 text-xl">check_circle</span>
-              <span>Whey Protein for Easy Digestion 90% Cysteine</span>
-            </li>
+            <li class="flex items-start"><span
+                class="material-icons text-primary mr-2 text-xl">check_circle</span>Nestamil 3 contain unique blend of
+              early food for Brain Development</li>
+            <li class="flex items-start"><span
+                class="material-icons text-primary mr-2 text-xl">check_circle</span>Nucleotides, Zinc, Selenium, Vitamin
+              A, C, D, E, to help Strengthen Immune System</li>
+            <li class="flex items-start"><span class="material-icons text-primary mr-2 text-xl">check_circle</span>High
+              Quality Protein, Eurobots</li>
+            <li class="flex items-start"><span class="material-icons text-primary mr-2 text-xl">check_circle</span>Whey
+              Protein for Easy Digestion 90% Cysteine</li>
           </ul>
         </div>
       </div>
@@ -391,6 +399,8 @@
 
   </div>
 </section>
+
+
 
 <!-- ================= Contact/Footer Section ================= -->
 <section class="py-16 bg-gradient-to-br from-primary to-purple-700 text-white">
