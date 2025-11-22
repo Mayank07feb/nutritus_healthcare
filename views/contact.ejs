@@ -1,0 +1,140 @@
+<!-- ================= Hero Section ================= -->
+<section class="relative w-full h-96 overflow-hidden">
+  <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1920&h=600&fit=crop" alt="Contact Us"
+    class="w-full h-full object-cover">
+
+  <!-- Purple overlay -->
+  <div class="absolute inset-0 bg-primary/80"></div>
+
+  <div class="absolute inset-0 flex items-center justify-start">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Contact Us</h1>
+      <p class="text-xl text-white/90">Get in touch with us for any inquiries</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Contact Section ================= -->
+<section class="py-16 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid md:grid-cols-2 gap-12">
+
+      <!-- LEFT SIDE — Nutritus Healthcare -->
+      <div class="bg-primary text-white rounded-2xl p-8 md:p-12">
+        <h2 class="text-3xl font-bold mb-8">Address:</h2>
+        <div class="space-y-8">
+
+          <!-- Location -->
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+              <span class="material-icons text-white text-3xl">location_on</span>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Location</h3>
+              <p class="text-white/90 leading-relaxed">
+                Nutritus Healthcare Pvt. Ltd., Unit No-704, 7th Floor, Palm Court, Sector-16, Gurugram, Haryana
+              </p>
+            </div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+              <span class="material-icons text-white text-3xl">smartphone</span>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Mobile</h3>
+              <p class="text-white/90">98373-49904</p>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="flex items-start space-x-4">
+            <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center">
+              <span class="material-icons text-white text-3xl">mail</span>
+            </div>
+            <div>
+              <h3 class="font-semibold text-lg mb-1">Email</h3>
+              <a href="mailto:nutritushealthcarepvtltd@gmail.com" class="text-white/90 hover:text-white">
+                nutritushealthcarepvtltd@gmail.com
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE — Contact Form -->
+      <div class="bg-gray-50 rounded-2xl p-8 md:p-12">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">Send Us a Message</h2>
+
+        <form action="/submit-contact" method="POST" class="space-y-6">
+
+          <!-- Name -->
+          <div>
+            <label for="name" class="block text-gray-700 font-semibold mb-2">Name</label>
+            <input type="text" name="name" id="name" required
+              class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:outline-none">
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-gray-700 font-semibold mb-2">Email</label>
+            <input type="email" name="email" id="email" required
+              class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:outline-none">
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label for="phone" class="block text-gray-700 font-semibold mb-2">Phone</label>
+            <input type="tel" name="phone" id="phone"
+              class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:outline-none">
+          </div>
+
+          <!-- Subject -->
+          <div>
+            <label for="subject" class="block text-gray-700 font-semibold mb-2">Subject</label>
+            <input type="text" name="subject" id="subject"
+              class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:outline-none">
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label for="message" class="block text-gray-700 font-semibold mb-2">Message</label>
+            <textarea name="message" id="message" rows="5" required
+              class="w-full border border-gray-300 rounded-xl p-3 focus:ring-2 focus:ring-primary focus:outline-none"></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div>
+            <button type="submit"
+              class="bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-xl transition-colors w-full">
+              Send Message
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= Map Section ================= -->
+<section class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Find Us</h2>
+      <p class="text-gray-600">Visit our office location</p>
+    </div>
+
+    <div class="rounded-2xl overflow-hidden shadow-2xl">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3509.123456789!2d77.012345678!3d28.456789012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d1abcdef12345%3A0xabcdef6789012345!2sNutritus%20Healthcare%20Pvt.%20Ltd.%2C%20Unit%20No-704%2C%207th%20Floor%2C%20Palm%20Court%2C%20Sector-16%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+        width="100%" height="450" class="border-0" allowfullscreen="" loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+  </div>
+</section>

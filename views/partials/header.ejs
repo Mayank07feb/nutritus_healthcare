@@ -1,0 +1,78 @@
+<!-- ================= Header Section ================= -->
+<header class="w-full fixed top-0 left-0 bg-white border-b border-gray-200 shadow-sm z-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <nav class="flex items-center justify-between h-24">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center space-x-3">
+        <img 
+          src="/assets/img/logo.png" 
+          alt="Neonesh Healthcare Logo" 
+          class="w-28 h-28 md:w-32 md:h-32 object-contain"
+        />
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <ul class="hidden lg:flex items-center space-x-6 font-semibold text-[15px]">
+
+        <li><a href="/about" class="nav-link relative group px-4 py-2 rounded-md text-gray-700 hover:text-primary transition-all duration-200">About Us<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-3/4"></span></a></li>
+        <li><a href="/products" class="nav-link relative group px-4 py-2 rounded-md text-gray-700 hover:text-primary transition-all duration-200">Products<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-3/4"></span></a></li>
+        <li><a href="/lab-reports" class="nav-link relative group px-4 py-2 rounded-md text-gray-700 hover:text-primary transition-all duration-200">Lab Reports<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-3/4"></span></a></li>
+        <li><a href="/blogs" class="nav-link relative group px-4 py-2 rounded-md text-gray-700 hover:text-primary transition-all duration-200">Blogs<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-3/4"></span></a></li>
+        <li><a href="/contact" class="nav-link relative group px-4 py-2 rounded-md text-gray-700 hover:text-primary transition-all duration-200">Contact Us<span class="absolute bottom-1 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary transition-all duration-200 group-hover:w-3/4"></span></a></li>
+
+      </ul>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors">
+        <span class="material-icons text-3xl">menu</span>
+      </button>
+
+    </nav>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-white shadow-md">
+    <ul class="flex flex-col space-y-2 p-4 font-semibold">
+      <li><a href="/about" class="mobile-nav-link block py-2 px-4 rounded hover:bg-primary/10">About Us</a></li>
+      <li><a href="/products" class="mobile-nav-link block py-2 px-4 rounded hover:bg-primary/10">Products</a></li>
+      <li><a href="/lab-reports" class="mobile-nav-link block py-2 px-4 rounded hover:bg-primary/10">Lab Reports</a></li>
+      <li><a href="/blogs" class="mobile-nav-link block py-2 px-4 rounded hover:bg-primary/10">Blogs</a></li>
+      <li><a href="/contact" class="mobile-nav-link block py-2 px-4 rounded hover:bg-primary/10">Contact Us</a></li>
+    </ul>
+  </div>
+</header>
+<!-- ================= End Header Section ================= -->
+
+<!-- ================= Active Link Script ================= -->
+<script>
+  const currentPath = window.location.pathname;
+
+  // Desktop Active Links
+  document.querySelectorAll('.nav-link').forEach(link => {
+    if(link.getAttribute('href') === currentPath){
+      link.classList.add('bg-primary', 'text-white', 'shadow-sm');
+      link.classList.remove('text-gray-700', 'hover:text-primary');
+
+      const span = link.querySelector('span');
+      if(span){
+        span.style.width = '75%';
+      }
+    }
+  });
+
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  // Mobile Active Links
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    if(link.getAttribute('href') === currentPath){
+      link.classList.add('bg-primary/10', 'text-primary', 'font-bold');
+    }
+  });
+</script>
